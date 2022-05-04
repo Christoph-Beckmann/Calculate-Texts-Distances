@@ -98,7 +98,7 @@ def save_data(new_data: pd.DataFrame):
     """
 
     try:
-        new_data.to_excel('Calc_error_counts.xlsx')
+        new_data.to_excel(resfolder + 'Calc_error_counts.xlsx')
     except Exception as error:
         print( "Error in saving new dataset: " + str(error) )
 

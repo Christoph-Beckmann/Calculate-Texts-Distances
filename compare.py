@@ -5,7 +5,7 @@ import pandas as pd
 resfolder = "./res/"
 text1file = "text1.txt"
 text2file = "text2.txt"
-datafile = "data.xlsx"
+datafile = "data_1.xlsx"
 
 def loadtexts():
     """
@@ -76,17 +76,17 @@ def compare_texts(text1: str, text2: str, data: pd.DataFrame, switch: bool ):
         data.loc[index,'text2'] = pp_text2
 
         if switch == False:
-            error_count_1 = Levenshtein.distance(words(pp_text1), words(text1))
-            error_count_2 = Levenshtein.distance(words(pp_text2), words(text2))
+            lvsth_distance_1 = Levenshtein.distance(words(pp_text1), words(text1))
+            lvsth_distance_2 = Levenshtein.distance(words(pp_text2), words(text2))
 
-            data.loc[index,'error_count1'] = error_count_1
-            data.loc[index,'error_count2'] = error_count_2
+            data.loc[index,'lvsth_distance1'] = lvsth_distance_1
+            data.loc[index,'lvsth_distance2'] = lvsth_distance_2
         else:    # Switch compared text, because we changed texts in week 3. 
             error_count_1 = Levenshtein.distance(words(pp_text2), words(text1))
             error_count_2 = Levenshtein.distance(words(pp_text1), words(text2))
 
-            data.loc[index,'error_count1_rev'] = error_count_1
-            data.loc[index,'error_count2_rev'] = error_count_2 
+            data.loc[index,'lvsth_distance1_rev'] = lvsth_distance_1
+            data.loc[index,'lvsth_distance2_rev'] = lvsth_distance_2 
 
     return data
 

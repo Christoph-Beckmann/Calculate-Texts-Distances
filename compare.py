@@ -94,17 +94,17 @@ def compare_texts(text1: str, text2: str, data: pd.DataFrame, swapped: bool ):
             lvsth_distance_2 = Levenshtein.distance(words(pp_text2), words(text2))
 
             data.loc[index,'lvsth_distance_T1'] = lvsth_distance_1
-            data.loc[index, 'percent_change_T1'] = ((lvsth_distance_1-lvsth_distance_text1)/lvsth_distance_1)*100
+            data.loc[index, 'percent_change_T1'] = ((lvsth_distance_1-lvsth_distance_text1)/lvsth_distance_text1)*100
             data.loc[index,'lvsth_distance_T2'] = lvsth_distance_2
-            data.loc[index, 'percent_change_T2'] = ((lvsth_distance_2-lvsth_distance_text2)/lvsth_distance_2)*100
+            data.loc[index, 'percent_change_T2'] = ((lvsth_distance_2-lvsth_distance_text2)/lvsth_distance_text2)*100
         else:    # Switch compared text, because we changed texts in week 3. 
             lvsth_distance_1 = Levenshtein.distance(words(pp_text2), words(text1))
             lvsth_distance_2 = Levenshtein.distance(words(pp_text1), words(text2))
 
             data.loc[index,'lvsth_distance_T1_rev'] = lvsth_distance_1
-            data.loc[index, 'percent_change_T1_rev'] = ((lvsth_distance_1-lvsth_distance_text2)/lvsth_distance_1)*100
+            data.loc[index, 'percent_change_T1_rev'] = ((lvsth_distance_1-lvsth_distance_text2)/lvsth_distance_text2)*100
             data.loc[index,'lvsth_distance_T2_rev'] = lvsth_distance_2
-            data.loc[index, 'percent_change_T2_rev'] = ((lvsth_distance_2-lvsth_distance_text1)/lvsth_distance_2)*100 
+            data.loc[index, 'percent_change_T2_rev'] = ((lvsth_distance_2-lvsth_distance_text1)/lvsth_distance_text1)*100 
 
     return data
 
